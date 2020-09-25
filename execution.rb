@@ -10,6 +10,10 @@ class Execution
     @client = Savon.client(wsdl: wsdl)
   end
 
+  def return_operations
+    client.operations
+  end
+
   def condition_response(response)
     Nokogiri::XML.parse(response.to_s).text.split("").keep_if{|value| value.match(/(\w| )/)}.join.strip
   end
@@ -30,6 +34,7 @@ class Execution
 end
 
 exec = Execution.new
+puts exec.return_operations
 puts exec.currency("CAD")
 puts exec.list_of_currency_codes
 

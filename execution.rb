@@ -28,7 +28,6 @@ class Execution
   def list_of_currency_codes
     operation = "list_of_currencies_by_code"
     response = client.call(operation.to_sym)
-    counter = 0
     condition_response(response).split(' ').join(' ')
   end
 end
